@@ -1,8 +1,8 @@
 <?php
 
-namespace lemon\Query;
+namespace Lemon\Query;
 
-use lemon\Container\Container;
+use Lemon\Container\Container;
 
 /**
  *  查询,
