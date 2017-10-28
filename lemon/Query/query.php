@@ -5,7 +5,7 @@ namespace lemon\Query;
 use lemon\Container\Container;
 
 /**
- *  查询
+ *  查询,
  */
 class Query
 {
