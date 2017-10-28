@@ -1,0 +1,15 @@
+{
+    "name": "ddllin/lemon",
+    "description": "身份证所属地",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ddllin",
+            "email": "360005141@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.0"
+    },
+}
