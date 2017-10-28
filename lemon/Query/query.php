@@ -17,7 +17,7 @@ class Query
         if (Container::bound('config') && !$this->config) {
             $this->config = Container::make('config');
         } else {
-            $this->config = require '../Config/config.php';
+            $this->config = require_once __DIR__ . '/../Config/Config.php';
             Container::bind('config', $this->config);
         }
     }
@@ -31,12 +31,12 @@ class Query
     {
         $query = Query::_getInstance();
 
-        if ($query->_check($idCard) || strlen($idCard)) {
+        if (!$query->_check($idCard) || strlen($idCard) < 4) {
             return $query->_returnData('', '');
         }
 
         $province = $query->_getProvince($idCard);
-        $city     = $query->_getCity($city);
+        $city     = $query->_getCity($idCard);
 
         return $query->_returnData($province, $city);
     }
@@ -99,7 +99,7 @@ class Query
     public function _returnData($province = '', $city = '')
     {
         return json_encode([
-            'province' => $provincem,
+            'province' => $province,
             'city'     => $city,
         ]);
     }
