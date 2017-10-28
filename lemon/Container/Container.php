@@ -1,6 +1,6 @@
 <?php
 
-namespace lemon/Container;
+namespace lemon\Container;
 
 class Container
 {

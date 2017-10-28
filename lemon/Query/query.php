@@ -22,75 +22,86 @@ class Query
         }
     }
 
-
     /**
      * 查询
      * @param  string $idCard
      * @return string
      */
-    public function query($idCard)
+    public static function query($idCard)
     {
-    	if ($this->_check($idCard)) {
-    		return $this->_returnData('', '');
-    	}
+        $query = Query::_getInstance();
 
-    	$province = $this->_getProvince($idCard);
-    	$city = $this->_getCity($city);
+        if ($query->_check($idCard) || strlen($idCard)) {
+            return $query->_returnData('', '');
+        }
 
-    	return $this->_returnData($province, $city);
+        $province = $query->_getProvince($idCard);
+        $city     = $query->_getCity($city);
+
+        return $query->_returnData($province, $city);
     }
 
+    /**
+     * 返回当前实例
+     * @return object
+     */
+    public static function _getInstance()
+    {
+        if (Container::bound('query')) {
+            return Container::make('query');
+        }
+
+        $query = new Query();
+        Container::bind('query', $query);
+        return $query;
+    }
 
     /**
      * @param  string $idCard
      * @return string
      */
-    private function _getProvince($idCard)
+    public function _getProvince($idCard)
     {
-    	$idCard = substr($idCard, 0, 2);
-    	return isset($this->config['province'][$idCard]) ? $this->config['province'][$idCard] : '';
+        $idCard = substr($idCard, 0, 2);
+        return isset($this->config['province'][$idCard]) ? $this->config['province'][$idCard] : '';
     }
 
-	/**
+    /**
      * @param  string $idCard
      * @return string
      */
-    private function _getCity($idCard)
+    public function _getCity($idCard)
     {
-    	$idCard = substr($idCard, 0, 4);
-    	return isset($this->config['city'][$idCard]) ? $this->config['city'][$idCard] : '';
+        $idCard = substr($idCard, 0, 4);
+        return isset($this->config['city'][$idCard]) ? $this->config['city'][$idCard] : '';
     }
-
-
 
     /**
      * 判断身份证是否合法
      * @param  string $idCard
      * @return bool
      */
-    private function _check($idCard)
+    public function _check($idCard)
     {
-    	if (preg_match(/^\d*$/, $idCard)) {
-    		return true;
-    	}
+        if (preg_match('/^\d*$/', $idCard)) {
+            return true;
+        }
 
-    	return false;
+        return false;
     }
-
-
 
     /**
      * 返回数据
-     * @param  string $province 
+     * @param  string $province
      * @param  string $city
      * @return string
      */
-    private function _returnData($province='', $city='')
+    public function _returnData($province = '', $city = '')
     {
-    	return json_encode([
-    		'province' => $provincem,
-    		'city'	=> $city,
-    	]);
+        return json_encode([
+            'province' => $provincem,
+            'city'     => $city,
+        ]);
     }
 
 }
