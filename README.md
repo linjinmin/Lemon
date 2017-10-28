@@ -9,10 +9,27 @@
 >首先   composer require ddllin/lemon
 
 
-#### 示例
+#### 示例, 应身份证前四位代表省会城市，所以必须传递，当然传递身份证全部编码也是可以的
 ```
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Lemon\Query\Query;
+
+var_dump(Query::query('xxxxx'));
 
 ```
+
+#### 返回格式, 为json字符串
+```
+ "{"province":"\u798f\u5efa\u7701","city":"\u798f\u5dde\u5e02"}"
+```
+
+
+
+
+
 
 
 
