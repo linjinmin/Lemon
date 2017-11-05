@@ -1,6 +1,7 @@
 {
     "name": "ddllin/lemon",
-    "description": "身份证所属地",
+    "description": "一个支持获取身份证归属地的PHP库",
+    "keywords": ["身份证", "归属地"],
     "license": "MIT",
     "authors": [
         {
@@ -8,15 +9,20 @@
             "email": "360005141@qq.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.0"
     },
-
+    "require-dev": {
+        "phpunit/phpunit": "^5.0|^6.0"
+    },
     "autoload":{
         "psr-4": {
-            "Lemon\\": "lemon/"
+            "Lemon\\": "src/Lemon/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4": {
+            "Lemon\\Tests\\": "tests/Lemon/"
         }
     }
-
 }

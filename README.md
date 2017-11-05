@@ -1,20 +1,27 @@
 # Lemon
 
-### 为了照顾无法使用该包的同学，我也配置了接口供大家查询。
-> 101.200.52.189:5647/query.php?identity=xxxx
+根据身份证的前4位数字获取该身份证的省会及城市。
 
-### 根据身份证的前4位数字，获取该身份证的省会及城市。
-
-
-###使用方法
-
->首先   composer require ddllin/lemon
+[![Build Status](https://img.shields.io/travis/ddllin/lemon/master.svg?style=flat-square)](https://travis-ci.org/ddllin/lemon)
+[![Coverage Status](https://img.shields.io/codecov/c/github/ddllin/lemon.svg?style=flat-square)](https://codecov.io/github/ddllin/lemon)
+[![Latest Stable Version](https://img.shields.io/packagist/v/ddllin/lemon.svg?style=flat-square&label=stable)](https://packagist.org/packages/ddllin/lemon)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/ddllin/lemon.svg?style=flat-square)](https://scrutinizer-ci.com/g/ddllin/lemon/?branch=master)
 
 
-#### 示例, 应身份证前四位代表省会城市，所以必须传递，当然传递身份证全部编码也是可以的
+## Installation
+
+执行下面命令安装
+
+```bash
+> composer require ddllin/lemon
 ```
-<?php
 
+
+## Basic Usage
+
+身份证前四位代表省会城市，所以必须传递，当然传递身份证全部编码也是可以的;
+
+```php
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Lemon\Query\Query;
@@ -23,11 +30,18 @@ var_dump(Query::query('xxxxx'));
 
 ```
 
-#### 返回格式, 为json字符串
-```
- "{"province":"\u798f\u5efa\u7701","city":"\u798f\u5dde\u5e02"}"
+返回格式为json字符串
+
+```json
+{
+    "province": "云南省",
+    "city": "玉溪市"
+}
 ```
 
+## License
+
+The MIT license. See [MIT](https://opensource.org/licenses/MIT)
 
 
 
