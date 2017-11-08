@@ -1,6 +1,8 @@
 <?php
 
-namespace Lemon\Tests\Query;
+include __DIR__ . '/../../vendor/autoload.php';
+
+// namespace Lemon\Tests\Query;
 
 use Lemon\Query\Query;
 use PHPUnit\Framework\TestCase;
@@ -10,7 +12,7 @@ class QueryTest extends TestCase
     public function testQuery()
     {
         $result = Query::query('5304');
-        $info = json_decode($result);
+        $info   = json_decode($result);
         $this->assertNotEmpty($info);
         $this->assertEquals('玉溪市', $info->city);
         $this->assertEquals('云南省', $info->province);

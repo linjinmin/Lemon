@@ -21,7 +21,7 @@ class Query
         if (Container::bound('config') && !$this->config) {
             $this->config = Container::make('config');
         } else {
-            $this->config = include __DIR__.'/../Config/Config.php';
+            $this->config = include __DIR__ . '/../Config/Config.php';
             Container::bind('config', $this->config);
         }
     }
@@ -42,21 +42,9 @@ class Query
         }
 
         $province = $query->getProvince($idCard);
-        $city = $query->getCity($idCard);
+        $city     = $query->getCity($idCard);
 
         return $query->returnData($province, $city);
-    }
-
-    /**
-     * 返回当前实例.
-     *
-     * @return object
-     *
-     * @deprecated
-     */
-    public static function _getInstance()
-    {
-        return static::getInstance();
     }
 
     /**
@@ -76,20 +64,6 @@ class Query
     }
 
     /**
-     * Alias of getProvince,废除.
-     *
-     * @param string $idCard
-     *
-     * @return string
-     *
-     * @deprecated
-     */
-    public function _getProvince($idCard)
-    {
-        return $this->getProvince($idCard);
-    }
-
-    /**
      * @param string $idCard
      *
      * @return string
@@ -102,20 +76,6 @@ class Query
     }
 
     /**
-     * getCity 别名，废除.
-     *
-     * @param string $idCard
-     *
-     * @return string
-     *
-     * @deprecated
-     */
-    public function _getCity($idCard)
-    {
-        return $this->getCity($idCard);
-    }
-
-    /**
      * @param string $idCard
      *
      * @return string
@@ -125,20 +85,6 @@ class Query
         $idCard = substr($idCard, 0, 4);
 
         return isset($this->config['city'][$idCard]) ? $this->config['city'][$idCard] : '';
-    }
-
-    /**
-     * 检查合法性，别名废除.
-     *
-     * @param string $idCard
-     *
-     * @return bool
-     *
-     * @deprecated
-     */
-    public function _check($idCard)
-    {
-        return $this->check($idCard);
     }
 
     /**
@@ -171,7 +117,7 @@ class Query
     {
         return json_encode([
             'province' => $province,
-            'city' => $city,
+            'city'     => $city,
         ]);
     }
 }

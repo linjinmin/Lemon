@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class ConfigTest extends TestCase
 {
-    const CONFIG_FILE_PATH = __DIR__.'/../../../src/Lemon/Config/Config.php';
+    const CONFIG_FILE_PATH = __DIR__ . '/../../../src/Lemon/Config/Config.php';
 
     public function testNotEmpty()
     {
