@@ -1,8 +1,5 @@
 <?php
-
-include __DIR__ . '/../../vendor/autoload.php';
-
-// namespace Lemon\Tests\Query;
+namespace Lemon\Tests\Query;
 
 use Lemon\Query\Query;
 use PHPUnit\Framework\TestCase;
